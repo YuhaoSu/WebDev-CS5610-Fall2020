@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Title</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../css/styles.css" rel="stylesheet"/>
+    <link href="../profile/profile.style.client.css" rel="stylesheet" />
+    <script>
+        function showAlert() {
+            alert ("Update successful!");
+        }
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <a href="../index.html">
+        Home
+    </a>
+
+    <h1>Profile</h1>
+
+    <div class="form-group row">
+        <label for="username" class="col-sm-2 col-form-label">
+            Username
+        </label>
+        <div class="col-sm-10">
+            <input id="username" value="alice" type="text" class="form-control wbdv-field wbdv-username" readonly/>
+        </div>
+    </div>
+
+    <div>
+        Phone
+        <input id="phoneFid"
+               title="Enter your phone"
+               placeholder="(555)123-4324"
+               class="form-control wbdv-field wbdv-phone "/>
+    </div>
+
+    <div class="background-color-blue">
+        Password<input type="password" class="form-control wbdv-field wbdv-password"/>
+    </div>
+
+    <div>
+        Email
+        <input title="Enter your email"
+               placeholder="alice@wonderland.com"
+               type="email"
+               class="form-control wbdv-field wbdv-email"/>
+    </div>
+
+    <div>
+        Role
+        <select class="form-control wbdv-field wbdv-role" >
+            <option>Faculty</option>
+            <option>Student</option>
+            <option>Admin</option>
+        </select>
+    </div>
+
+    <div>
+        Date of Birth
+        <input value="2004-11-23"
+               type="date"
+               class="form-control wbdv-field wbdv-dob"/>
+    </div>
+
+    <button class="btn btn-success btn-block wbdv-button wbdv-update" onclick="showAlert()">Update</button>
+
+    <div class="alertFid wbdv-message" role="alert">
+        Update successful!
+    </div>
+
+    <form action="../index.html">
+        <button class="btn btn-danger btn-block wbdv-button wbdv-logout" style="margin-top: 10px">Logout</button>
+    </form>
+
+</div>
+
+</body>
+</html>
