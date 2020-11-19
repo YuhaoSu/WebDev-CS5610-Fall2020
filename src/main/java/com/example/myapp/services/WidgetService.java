@@ -1,50 +1,90 @@
 package com.example.myapp.services;
 import com.example.myapp.models.Widget;
-import com.example.myapp.repositories.WidgetRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
-@Service
 public class WidgetService {
-
-    @Autowired
-    WidgetRepository widgetRepository;
+    List<Widget> widgets = new ArrayList<Widget>();
 
     public List<Widget> findWidgetsForTopic(String topicId) {
-        return widgetRepository.findWidgetsForTopic(topicId);
+        List<Widget> ws = new ArrayList<Widget>();
+        for(Widget w: widgets) {
+            if(w.getTopicId().equals(topicId)) {
+                ws.add(w);
+            }
+        }
+        return ws;
     }
+
     public List<Widget> findAllWidgets() {
-        return (List<Widget>) widgetRepository.findAll();
+        return widgets;
     }
 
-    public Widget findWidgetById(Integer widgetId) {
-        return widgetRepository.findById(widgetId).get();
-    }
-    public Widget createWidget(Widget widget) {
-        return widgetRepository.save(widget);
-    }
-
-    public Widget updateWidget(Integer widgetId, Widget newWidget) {
-
-        Optional widdgetO = widgetRepository.findById((widgetId));
-        if(widdgetO.isPresent()){
-            Widget widget = (Widget) widdgetO.get();
-            widget.setName(newWidget.getName());
-            widget.setType(newWidget.getType());
-            return widgetRepository.save(widget);
+    public Widget findWidgetById(String widgetId) {
+        for(Widget w: widgets) {
+            if(w.getId().equals(widgetId))
+                return w;
         }
-        else {
-            return null;
-        }
+        return null;
     }
 
-    public List<Widget> deleteWidgets(Integer widgetId){
-        widgetRepository.deleteById(widgetId);
-        return (List<Widget>) widgetRepository.findAll();
+    public Widget createWidget(Widget widget, String topicId) {
+        widget.setId((new Date()).toString());
+        widget.setTopicId(topicId);
+//        widget.setSize(widget.getSize());
+//        widget.setText(widget.getText());
+        widgets.add(widget);
+        return widget;
+    }
+
+    public Integer updateWidget(String widgetId, Widget newWidget) {
+        for(Widget w: widgets) {
+            if(w.getId().equals(widgetId)) {
+                w.setName(newWidget.getName());
+                w.setType(newWidget.getType());
+                w.setText(newWidget.getText());
+                return 1;
+            }
+        }
+        return 0;
+    }
+
+    public Integer deleteWidgets(String widgetId){
+        for(Widget w: widgets) {
+            if(w.getId().equals(widgetId)){
+                widgets.remove(w);
+                return 1;
+        }}
+        return 0;
+    }
+//
+//    public List<Widget> deleteWidgets(String widgetId){
+//        for(Widget w: widgets) {
+//            if(w.getId().equals(widgetId)){
+//                widgets.remove(w);
+//            }}
+//        return widgets;
+//    }
+//
+
+
+    public List<Widget> saveAllWidgets(String topicId, List<Widget> newWidgets){
+        List<Widget> oldWidgetList = findWidgetsForTopic(topicId);
+        for(Widget oldWidget: oldWidgetList){
+            deleteWidgets(oldWidget.getId());
+        }
+
+        for ( Widget newWidget: newWidgets){
+            widgets.add(newWidget);
+        }
+
+//        for(Widget newWidget: newWidgets){
+//            updateWidget(newWidget.getId(), newWidget);
+//        }
+
+        return newWidgets;
     }
 
 }

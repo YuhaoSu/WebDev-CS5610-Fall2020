@@ -1,73 +1,122 @@
 package com.example.myapp.models;
 
-
-import javax.persistence.*;
-
-@Entity
-@Table(name="widgets")
 public class Widget {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String topicId;
+
+    private String id;
     private String name;
     private String type;
-//    private Integer widgetOrder;
+    private String topicId;
+    private Integer widgetOrder;
     private String text;
-    private String url;
-//    private Integer size;
-//    private Integer width;
-//    private Integer height;
-//    private String cssClass;
-//    private String style;
-//    private String value;
+    private Integer size;
+    private Integer width;
+    private Integer height;
+    private String cssClass;
+    private String style;
+    private String value;
+    private boolean ordered;
 
     public Widget(
-            Integer id,
-            String topicId,
+            String id,
             String name,
             String type,
-//            Integer widgetOrder,
+            String topicId,
+            Integer widgetOrder,
             String text,
-            String url
-//            Integer size,
-//            Integer width,
-//            Integer height,
-//            String cssClass,
-//            String style,
-//            String value
-    ) {
+            Integer size,
+            Integer width,
+            Integer height,
+            String cssClass,
+            String style,
+            String value,
+            boolean ordered) {
         this.id = id;
-        this.topicId = topicId;
         this.name = name;
         this.type = type;
-//        this.widgetOrder = widgetOrder;
+        this.topicId = topicId;
+        this.widgetOrder = widgetOrder;
         this.text = text;
-        this.url = url;
-//        this.size = size;
-//        this.width = width;
-//        this.height = height;
-//        this.cssClass = cssClass;
-//        this.style = style;
-//        this.value = value;
+        this.size = size;
+        this.width = width;
+        this.height = height;
+        this.cssClass =cssClass;
+        this.style = style;
+        this.value = value;
+        this.ordered = ordered;
     }
 
     public Widget() {
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public String getText() {
+        return text;
     }
 
     public String getTopicId() {
         return topicId;
     }
 
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public String getStyle() {
+        return style;
+    }
+
+    public void setStyle(String style) {
+        this.style = style;
+    }
+
+    public String getCssClass() {
+        return cssClass;
+    }
+
+    public void setCssClass(String cssClass) {
+        this.cssClass = cssClass;
+    }
+
+    public Integer getHeight() {
+        return height;
+    }
+
+    public void setHeight(Integer height) {
+        this.height = height;
+    }
+
+    public Integer getWidth() {
+        return width;
+    }
+
+    public void setWidth(Integer width) {
+        this.width = width;
+    }
+
+    public Integer getWidgetOrder() {
+        return widgetOrder;
+    }
+
+    public void setWidgetOrder(Integer widgetOrder) {
+        this.widgetOrder = widgetOrder;
+    }
+
     public void setTopicId(String topicId) {
         this.topicId = topicId;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -87,77 +136,22 @@ public class Widget {
         this.type = type;
     }
 
-//    public void setSize(Integer size) {
-//        this.size = size;
-//    }
-//
-//    public Integer getSize() {
-//        return size;
-//    }
-//
-//    public String getValue() {
-//        return value;
-//    }
-//
-//    public void setValue(String value) {
-//        this.value = value;
-//    }
-//
-//    public String getStyle() {
-//        return style;
-//    }
-//
-//    public void setStyle(String style) {
-//        this.style = style;
-//    }
-//
-//    public String getCssClass() {
-//        return cssClass;
-//    }
-//
-//    public void setCssClass(String cssClass) {
-//        this.cssClass = cssClass;
-//    }
-//
-//    public Integer getHeight() {
-//        return height;
-//    }
-//
-//    public void setHeight(Integer height) {
-//        this.height = height;
-//    }
-//
-//    public Integer getWidth() {
-//        return width;
-//    }
-//
-//    public void setWidth(Integer width) {
-//        this.width = width;
-//    }
-//
-    public String getUrl() {
-        return url;
+    public void setSize(Integer size) {
+        this.size = size;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
-//
-//    public Integer getWidgetOrder() {
-//        return widgetOrder;
-//    }
-//
-//    public void setWidgetOrder(Integer widgetOrder) {
-//        this.widgetOrder = widgetOrder;
-//    }
-//
-    public void setText(String text) {
-        this.text = text;
+    public Integer getSize() {
+        return size;
     }
 
-    public String getText() {
-        return text;
+    public boolean isOrdered() {
+        return ordered;
     }
+
+    public void setOrdered(boolean ordered) {
+        this.ordered = ordered;
+    }
+
 
 
 }
