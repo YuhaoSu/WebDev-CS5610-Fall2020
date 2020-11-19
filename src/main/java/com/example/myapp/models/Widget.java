@@ -1,45 +1,58 @@
 package com.example.myapp.models;
 
-public class Widget {
 
-    private String id;
+import javax.persistence.*;
+
+@Entity
+@Table(name="widgets")
+public class Widget {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private String topicId;
     private String name;
     private String type;
-    private String topicId;
-    private Integer widgetOrder;
     private String text;
+    private String src;
+    private String items;
+    private Integer widgetOrder;
     private Integer size;
     private Integer width;
     private Integer height;
     private String cssClass;
     private String style;
     private String value;
-    private boolean ordered;
+    private Boolean ordered;
 
     public Widget(
-            String id,
+            Integer id,
+            String topicId,
             String name,
             String type,
-            String topicId,
-            Integer widgetOrder,
             String text,
+            String src,
+            String items,
+            Integer widgetOrder,
             Integer size,
             Integer width,
             Integer height,
             String cssClass,
             String style,
             String value,
-            boolean ordered) {
+            Boolean ordered
+    ) {
         this.id = id;
+        this.topicId = topicId;
         this.name = name;
         this.type = type;
-        this.topicId = topicId;
-        this.widgetOrder = widgetOrder;
         this.text = text;
+        this.src = src;
+        this.items = items;
+        this.widgetOrder = widgetOrder;
         this.size = size;
         this.width = width;
         this.height = height;
-        this.cssClass =cssClass;
+        this.cssClass = cssClass;
         this.style = style;
         this.value = value;
         this.ordered = ordered;
@@ -48,16 +61,44 @@ public class Widget {
     public Widget() {
     }
 
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public String getText() {
-        return text;
-    }
-
     public String getTopicId() {
         return topicId;
+    }
+
+    public void setTopicId(String topicId) {
+        this.topicId = topicId;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setSize(Integer size) {
+        this.size = size;
+    }
+
+    public Integer getSize() {
+        return size;
     }
 
     public String getValue() {
@@ -100,6 +141,14 @@ public class Widget {
         this.width = width;
     }
 
+    public String getSrc() {
+        return src;
+    }
+
+    public void setSrc(String src) {
+        this.src = src;
+    }
+
     public Integer getWidgetOrder() {
         return widgetOrder;
     }
@@ -108,51 +157,28 @@ public class Widget {
         this.widgetOrder = widgetOrder;
     }
 
-    public void setTopicId(String topicId) {
-        this.topicId = topicId;
+    public void setText(String text) {
+        this.text = text;
     }
 
-    public String getId() {
-        return id;
+    public String getText() {
+        return text;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public void setSize(Integer size) {
-        this.size = size;
-    }
-
-    public Integer getSize() {
-        return size;
-    }
-
-    public boolean isOrdered() {
+    public Boolean getOrdered() {
         return ordered;
     }
 
-    public void setOrdered(boolean ordered) {
+    public void setOrdered(Boolean ordered) {
         this.ordered = ordered;
     }
 
+    public String getItems() {
+        return items;
+    }
 
-
+    public void setItems(String items) {
+        this.items = items;
+    }
 }
 
